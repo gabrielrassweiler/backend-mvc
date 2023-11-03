@@ -1,4 +1,11 @@
 {
+  "name": "gabriel/backend-mvc",
+  "authors": [
+    {
+      "name": "gabrielrassweiler",
+      "email": "gabriel_rassweiler@hotmail.com.br"
+    }
+  ],
   "autoload": {
     "psr-4": {
       "backend\\": "src/"
