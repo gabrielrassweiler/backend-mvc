@@ -23,10 +23,10 @@ class Controller
 
 	public function controleRotas(): void
 	{
-		$classe = $_GET['classe'];
-		$metodo = $_GET['metodo'];
-
 		if ($_GET) {
+			$classe = $_GET['classe'];
+			$metodo = $_GET['metodo'];
+
 			switch ([$classe, $metodo]) {
 				case ['pessoa', 'listar']:
 					(new ControllerPessoa())->listar();
