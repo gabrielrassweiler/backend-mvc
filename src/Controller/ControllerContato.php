@@ -13,4 +13,9 @@ class ControllerContato extends Controller
     {
         return $this->View->listar();
     }
+
+    public function alterar()
+    {
+        return $this->View->alterar();
+    }
 }

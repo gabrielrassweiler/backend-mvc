@@ -31,6 +31,12 @@ class Controller
 				case ['pessoa', 'listar']:
 					(new ControllerPessoa())->listar();
 					return;
+				case ['pessoa', 'alterar']:
+					(new ControllerPessoa())->alterar();
+					return;
+				case ['contato', 'alterar']:
+					(new ControllerPessoa())->alterar();
+					return;
 				case ['contato', 'listar']:
 					(new ControllerContato())->listar();
 					return;

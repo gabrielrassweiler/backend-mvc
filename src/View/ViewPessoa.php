@@ -2,6 +2,23 @@
 
 class ViewPessoa
 {
+    public function alterar(): void
+    {
+        echo '
+            <div class="d-flex justify-content-center">
+                <form style="width: 70%; border: 1px solid #343a40; border-radius: 5px" class="p-3 row">
+                    <input type="text" class="form-control col-md-6" id="nome" placeholder="Digite o nome">
+                    <input type="text" class="form-control col-md-6" id="cpf" placeholder="Digite o CPF">
+
+                    <div class="col-md-12 mt-3">
+                        <button class="btn btn-primary float-right ml-2" type="submit">Enviar</button>
+                        <a class="btn btn-secondary float-right" href="index.php?classe=pessoa&metodo=listar" role="button">Voltar</a>
+                    </div>
+                </form>
+            </div>
+        ';
+    }
+
     public function listar(): void
     {
         echo '
@@ -35,7 +52,7 @@ class ViewPessoa
                         <td>Otto</td>
                         <td>
                             <a class="btn btn-warning mr-1" href="index.php?classe=pessoa&metodo=alterar" role="button"><i class="bi bi-pencil"></i></a>
-                            <a class="btn btn-info mr-1" href="index.php?classe=pessoa&metodo=vizualizar" role="button"><i class="bi bi-eye"></i></a>
+                            <a class="btn btn-info mr-1" href="index.php?classe=pessoa&metodo=visualizar" role="button"><i class="bi bi-eye"></i></a>
                             <a class="btn btn-danger" href="index.php?classe=pessoa&metodo=deletar" role="button"><i class="bi bi-trash"></i></a>
                         </td>
                     </tr>
@@ -45,7 +62,7 @@ class ViewPessoa
                         <td>Thornton</td>
                         <td>
                             <a class="btn btn-warning mr-1" href="index.php?classe=pessoa&metodo=alterar" role="button"><i class="bi bi-pencil"></i></a>
-                            <a class="btn btn-info mr-1" href="index.php?classe=pessoa&metodo=vizualizar" role="button"><i class="bi bi-eye"></i></a>
+                            <a class="btn btn-info mr-1" href="index.php?classe=pessoa&metodo=visualizar" role="button"><i class="bi bi-eye"></i></a>
                             <a class="btn btn-danger" href="index.php?classe=pessoa&metodo=deletar" role="button"><i class="bi bi-trash"></i></a>
                         </td>
                     </tr>
@@ -55,7 +72,7 @@ class ViewPessoa
                         <td>the Bird</td>
                         <td>
                             <a class="btn btn-warning mr-1" href="index.php?classe=pessoa&metodo=alterar" role="button"><i class="bi bi-pencil"></i></a>
-                            <a class="btn btn-info mr-1" href="index.php?classe=pessoa&metodo=vizualizar" role="button"><i class="bi bi-eye"></i></a>
+                            <a class="btn btn-info mr-1" href="index.php?classe=pessoa&metodo=visualizar" role="button"><i class="bi bi-eye"></i></a>
                             <a class="btn btn-danger" href="index.php?classe=pessoa&metodo=deletar" role="button"><i class="bi bi-trash"></i></a>
                         </td>
                     </tr>
