@@ -14,8 +14,18 @@ class ControllerPessoa extends Controller
         return $this->View->listar();
     }
 
-    public function alterar()
+    public function alterar($id)
     {
-        return $this->View->alterar();
+        return $this->View->alterar($id);
+    }
+
+    public function visualizar($id)
+    {
+        return $this->View->visualizar($id);
+    }
+
+    public function deletar($id)
+    {
+        return $this->View->deletar();
     }
 }
