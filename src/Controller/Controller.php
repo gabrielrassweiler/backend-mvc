@@ -3,11 +3,21 @@
 namespace backend\Controller;
 
 use backend\View\View;
+use Doctrine\DBAL\DriverManager;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\ORMSetup;
 
 class Controller
 {
 	protected $View;
 	protected $Model;
+	protected $nomeModel;
+	protected EntityManager $entityManager;
+
+    public function __construct()
+    {
+        $this->entityManager = $this->getConexao();
+    }
 
 	protected function carregaMVC()
 	{
@@ -16,6 +26,7 @@ class Controller
 
         $model = 'Model' . ucfirst($_GET['classe']);
         $view = 'View' . ucfirst($_GET['classe']);
+        $this->nomeModel = $model;
 
         $this->Model = new $model();
         $this->View = new $view();
@@ -59,5 +70,23 @@ class Controller
 		}
 
 		(new View())->listarRotaHome();
+	}
+
+	private function getConexao(): EntityManager
+	{
+		$paths = [__DIR__ . '../../src/Model'];
+		$isDevMode = true;
+
+		// the connection configuration
+		$dbParams = [
+			'driver' => 'pdo_pgsql',
+			'user' => getenv('POSTGRES_USER'),
+			'password' => getenv('POSTGRES_PASSWORD'),
+			'dbname' => getenv('POSTGRES_DB'),
+		];
+
+		$config = ORMSetup::createAttributeMetadataConfiguration($paths, $isDevMode);
+		$connection = DriverManager::getConnection($dbParams, $config);
+		return new EntityManager($connection, $config);
 	}
 }

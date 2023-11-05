@@ -10,5 +10,11 @@
     "psr-4": {
       "backend\\": "src/"
     }
+  },
+  "require": {
+    "php": "^8.2.0",
+    "doctrine/orm": "^2.16",
+    "doctrine/dbal": "^3.6",
+    "symfony/cache": "^6.2"
   }
 }

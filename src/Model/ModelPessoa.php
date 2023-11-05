@@ -1,87 +1,74 @@
 <?php
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\Table;
+use Doctrine\ORM\Mapping\Id;
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\GeneratedValue;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="pessoa")
- */
+#[Entity]
+#[Table(name: 'pessoa')]
 class ModelPessoa
 {
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[Id]
+    #[Column(type: 'integer')]
+    #[GeneratedValue()]
+    private int $id;
+
+    #[Column(type: 'string')]
+    private string $nome;
+
+    #[Column(type: 'string')]
+    private string $cpf;
 
     /**
-     * @ORM\Column(type="string")
+     * @return integer
      */
-    private $nome;
-
-    /**
-     * @ORM\Column(type="string")
-     */
-    private $cpf;
-
-    /**
-     * Get the value of cpf
-     */
-    public function getCpf()
-    {
-        return $this->cpf;
-    }
-
-    /**
-     * Set the value of cpf
-     *
-     * @return  self
-     */
-    public function setCpf($cpf)
-    {
-        $this->cpf = $cpf;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of nome
-     */
-    public function getNome()
-    {
-        return $this->nome;
-    }
-
-    /**
-     * Set the value of nome
-     *
-     * @return  self
-     */
-    public function setNome($nome)
-    {
-        $this->nome = $nome;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of id
-     */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
     /**
-     * Set the value of id
-     *
-     * @return  self
+     * @param integer $id
+     * @return void
      */
-    public function setId($id)
+    public function setId(int $id): void
     {
         $this->id = $id;
+    }
 
-        return $this;
+    /**
+     * @return string
+     */
+    public function getNome(): string
+    {
+        return $this->nome;
+    }
+
+    /**
+     * @param string $nome
+     * @return void
+     */
+    public function setNome(string $nome): void
+    {
+        $this->nome = $nome;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCpf(): string
+    {
+        return $this->cpf;
+    }
+
+    /**
+     * @param string $cpf
+     * @return void
+     */
+    public function setCpf(string $cpf): void
+    {
+        $this->cpf = $cpf;
     }
 }
