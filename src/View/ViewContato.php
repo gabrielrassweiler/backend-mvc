@@ -58,9 +58,26 @@ class ViewContato
         ';
     }
 
-	public function listar(): void
+	public function listar(ModelContato $contatos): void
 	{
-        echo '
+        $linhas = '';
+        foreach ($contatos as $contato) {
+            $linhas .= `
+                <tr>
+                    <td>{$contato->getId()}</td>
+                    <td>{$contato->getIdPessoa()}</td>
+                    <td>{$contato->getTipo()}</td>
+                    <td>{$contato->getDescrição()}</td>
+                    <td>
+                        <a class="btn btn-warning mr-1" href="index.php?classe=contato&metodo=alterar&id={$contato->getId()}" role="button"><i class="bi bi-pencil"></i></a>
+                        <a class="btn btn-info mr-1" href="index.php?classe=contato&metodo=visualizar&id={$contato->getId()}" role="button"><i class="bi bi-eye"></i></a>
+                        <a class="btn btn-danger" href="index.php?classe=contato&metodo=deletar&id={$contato->getId()}" role="button"><i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+            `;
+        }
+
+        echo `
             <div class="d-flex justify-content-center mb-3">
                 <div class="input-group d-flex justify-content-between" style="width: 70%;">
                     <button type="button" class="btn btn-secondary">Novo</button>
@@ -79,42 +96,10 @@ class ViewContato
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>Email</td>
-                        <td>Otto</td>
-                        <td>
-                            <a class="btn btn-warning mr-1" href="index.php?classe=contato&metodo=alterar&id=1" role="button"><i class="bi bi-pencil"></i></a>
-                            <a class="btn btn-info mr-1" href="index.php?classe=contato&metodo=visualizar&id=1" role="button"><i class="bi bi-eye"></i></a>
-                            <a class="btn btn-danger" href="index.php?classe=contato&metodo=deletar&id=1" role="button"><i class="bi bi-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>Email</td>
-                        <td>Thornton</td>
-                        <td>
-                            <a class="btn btn-warning mr-1" href="index.php?classe=contato&metodo=alterar&id=1" role="button"><i class="bi bi-pencil"></i></a>
-                            <a class="btn btn-info mr-1" href="index.php?classe=contato&metodo=visualizar&id=1" role="button"><i class="bi bi-eye"></i></a>
-                            <a class="btn btn-danger" href="index.php?classe=contato&metodo=deletar&id=1" role="button"><i class="bi bi-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>3</td>
-                        <td>Email</td>
-                        <td>the Bird</td>
-                        <td>
-                            <a class="btn btn-warning mr-1" href="index.php?classe=contato&metodo=alterar&id=1" role="button"><i class="bi bi-pencil"></i></a>
-                            <a class="btn btn-info mr-1" href="index.php?classe=contato&metodo=visualizar&id=1" role="button"><i class="bi bi-eye"></i></a>
-                            <a class="btn btn-danger" href="index.php?classe=contato&metodo=deletar&id=1" role="button"><i class="bi bi-trash"></i></a>
-                        </td>
-                    </tr>
+                        {$linhas}
                     </tbody>
                 </table>
             </div>
-        ';
+        `;
 	}
 }

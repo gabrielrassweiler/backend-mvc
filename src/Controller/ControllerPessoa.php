@@ -12,7 +12,21 @@ class ControllerPessoa extends Controller
 
     public function listar()
     {
-        return $this->View->listar();
+        if (!array_key_exists('filtro_nome', $_POST) || !$_POST['filtro_nome']) {
+            $repository = $this->entityManager->getRepository($this->nomeModel);
+
+            $dados = $repository->findBy([], ['id' => 'desc']);
+        } else {
+            $repository = $this->entityManager->getRepository($this->nomeModel);
+
+            $dados = $repository->createQueryBuilder('pessoa')
+                ->where('lower(pessoa.nome) like lower(:pessoa_nome)')
+                ->setParameter(':pessoa_nome', '%' . $_POST['filtro_nome'] . '%')
+                ->getQuery()
+                ->execute();
+        }
+
+        return $this->View->listar($dados);
     }
 
     public function alterar($id)

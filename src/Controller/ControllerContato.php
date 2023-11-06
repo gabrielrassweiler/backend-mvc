@@ -12,7 +12,11 @@ class ControllerContato extends Controller
 
     public function listar()
     {
-        return $this->View->listar();
+        $repository = $this->entityManager->getRepository($this->nomeModel);
+
+        $dados = $repository->findBy([], ['id' => 'desc']);
+
+        return $this->View->listar($dados);
     }
 
     public function alterar($id)

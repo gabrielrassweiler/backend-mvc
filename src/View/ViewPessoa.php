@@ -46,16 +46,32 @@ class ViewPessoa
         ';
     }
 
-    public function listar(): void
+    public function listar(ModelPessoa $pessoas): void
     {
-        echo '
+        $linhas = '';
+        foreach ($pessoas as $pessoa) {
+            $linhas .= `
+                <tr>
+                    <td>{$pessoa->getId()}</td>
+                    <td>{$pessoa->getNome()}</td>
+                    <td>{$pessoa->getCpf()}</td>
+                    <td>
+                        <a class="btn btn-warning mr-1" href="index.php?classe=pessoa&metodo=alterar&id={$pessoa->getId()}" role="button"><i class="bi bi-pencil"></i></a>
+                        <a class="btn btn-info mr-1" href="index.php?classe=pessoa&metodo=visualizar&id={$pessoa->getId()}" role="button"><i class="bi bi-eye"></i></a>
+                        <a class="btn btn-danger" href="index.php?classe=pessoa&metodo=deletar&id={$pessoa->getId()}" role="button"><i class="bi bi-trash"></i></a>
+                    </td>
+                </tr>
+            `;
+        }
+
+        echo `
             <div class="d-flex justify-content-center mb-3">
                 <div class="input-group d-flex justify-content-between" style="width: 70%;">
                     <button type="button" class="btn btn-secondary">Novo</button>
 
                     <form class="col-md-4 input-group" action="index.php?classe=pessoa&metodo=listar" method="post">
                         <div class="form-group d-flex">
-                            <input name="filtro" type="text" class="form-control"/>
+                            <input name="filtro_nome" type="text" class="form-control"/>
                             <button class="btn btn-outline-secondary">Pesquisar</button>
                         </div>
                     </form>
@@ -73,39 +89,10 @@ class ViewPessoa
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>
-                            <a class="btn btn-warning mr-1" href="index.php?classe=pessoa&metodo=alterar&id=1" role="button"><i class="bi bi-pencil"></i></a>
-                            <a class="btn btn-info mr-1" href="index.php?classe=pessoa&metodo=visualizar&id=1" role="button"><i class="bi bi-eye"></i></a>
-                            <a class="btn btn-danger" href="index.php?classe=pessoa&metodo=deletar&id=1" role="button"><i class="bi bi-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>
-                            <a class="btn btn-warning mr-1" href="index.php?classe=pessoa&metodo=alterar&id=2" role="button"><i class="bi bi-pencil"></i></a>
-                            <a class="btn btn-info mr-1" href="index.php?classe=pessoa&metodo=visualizar&id=2" role="button"><i class="bi bi-eye"></i></a>
-                            <a class="btn btn-danger" href="index.php?classe=pessoa&metodo=deletar&id=2" role="button"><i class="bi bi-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>
-                            <a class="btn btn-warning mr-1" href="index.php?classe=pessoa&metodo=alterar&id=3" role="button"><i class="bi bi-pencil"></i></a>
-                            <a class="btn btn-info mr-1" href="index.php?classe=pessoa&metodo=visualizar&id=3" role="button"><i class="bi bi-eye"></i></a>
-                            <a class="btn btn-danger" href="index.php?classe=pessoa&metodo=deletar&id=3" role="button"><i class="bi bi-trash"></i></a>
-                        </td>
-                    </tr>
+                        {$linhas}
                     </tbody>
                 </table>
             </div>
-        ';
+        `;
     }
 }
