@@ -2,16 +2,6 @@
 
 class ViewContato
 {
-    public function deletar()
-    {
-        echo '
-            <div class="justify-content-center">
-                <p>Registro removido com sucesso!</p>
-                <a class="btn btn-secondary" href="index.php?classe=contato&metodo=listar" role="button">Voltar</a>
-            </div>
-        ';
-    }
-
     public function form($contato, $metodo = '')
     {
         if ($metodo === 'alterar') {
@@ -27,16 +17,16 @@ class ViewContato
 
         echo '
             <div class="d-flex justify-content-center">
-                <form style="width: 70%; border: 1px solid #343a40; border-radius: 5px" class="p-3 row" method="post" action="' + $action + '">
+                <form style="width: 70%; border: 1px solid #343a40; border-radius: 5px" class="p-3 row" method="post" action="' . $action . '">
                     <select clas>s="form-control col-md-4" id="tipo">
                         <option value="telefone">Telefone</option>
                         <option value="email">Email</option>
                     </select>
-                    <input type="text" class="form-control col-md-4" id="id_pessoa" placeholder="Digite o id da pessoa" value="' + $contato->getIdPessoa() ?? '' + '">
-                    <input type="text" class="form-control col-md-4" id="descricao" placeholder="Digite a descrição" value="' + $contato->getDescricao() ?? '' + '">
+                    <input type="text" class="form-control col-md-4" id="id_pessoa" placeholder="Digite o id da pessoa" value="' . $contato->getIdPessoa() ?? '' . '">
+                    <input type="text" class="form-control col-md-4" id="descricao" placeholder="Digite a descrição" value="' . $contato->getDescricao() ?? '' . '">
 
                     <div class="col-md-12 mt-3">
-                        ' + $button + '
+                        ' . $button . '
                         <a class="btn btn-secondary float-right" href="index.php?classe=contato&metodo=listar" role="button">Voltar</a>
                     </div>
                 </form>
@@ -50,14 +40,14 @@ class ViewContato
         foreach ($contatos as $contato) {
             $linhas .= '
                 <tr>
-                    <td>' + $contato->getId() + '</td>
-                    <td>' + $contato->getIdPessoa() + '</td>
-                    <td>' + $contato->getTipo() + '</td>
-                    <td>' + $contato->getDescrição() + '</td>
+                    <td>' . $contato->getId() . '</td>
+                    <td>' . $contato->getIdPessoa() . '</td>
+                    <td>' . $contato->getTipo() . '</td>
+                    <td>' . $contato->getDescrição() . '</td>
                     <td>
-                        <a class="btn btn-warning mr-1" href="index.php?classe=contato&metodo=alterar&id="' + $contato->getId() + '" role="button"><i class="bi bi-pencil"></i></a>
-                        <a class="btn btn-info mr-1" href="index.php?classe=contato&metodo=visualizar&id="' + $contato->getId() + '" role="button"><i class="bi bi-eye"></i></a>
-                        <a class="btn btn-danger" href="index.php?classe=contato&metodo=deletar&id="' + $contato->getId() + '" role="button"><i class="bi bi-trash"></i></a>
+                        <a class="btn btn-warning mr-1" href="index.php?classe=contato&metodo=alterar&id="' . $contato->getId() . '" role="button"><i class="bi bi-pencil"></i></a>
+                        <a class="btn btn-info mr-1" href="index.php?classe=contato&metodo=visualizar&id="' . $contato->getId() . '" role="button"><i class="bi bi-eye"></i></a>
+                        <a class="btn btn-danger" href="index.php?classe=contato&metodo=deletar&id="' . $contato->getId() . '" role="button"><i class="bi bi-trash"></i></a>
                     </td>
                 </tr>
             ';
@@ -81,7 +71,7 @@ class ViewContato
                         <th scope="col">Ações</th>
                     </tr>
                     </thead>
-                    <tbody>' + $linhas + '</tbody>
+                    <tbody>' . $linhas . '</tbody>
                 </table>
             </div>
         ';

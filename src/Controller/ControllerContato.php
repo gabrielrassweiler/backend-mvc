@@ -45,6 +45,11 @@ class ControllerContato extends Controller
         $this->entityManager->remove($model);
         $this->entityManager->flush();
 
-        return $this->View->deletar();
+        echo '
+            <script type="text/javascript">
+                window.location.href="index.php?classe=contato&metodo=listar";
+                alert("Registro deletado com sucesso!");
+            </script>
+        ';
     }
 }

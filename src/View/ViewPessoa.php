@@ -2,20 +2,10 @@
 
 class ViewPessoa
 {
-    public function deletar()
-    {
-        echo '
-            <div class="justify-content-center">
-                <p>Registro removido com sucesso!</p>
-                <a class="btn btn-secondary" href="index.php?classe=pessoa&metodo=listar" role="button">Voltar</a>
-            </div>
-        ';
-    }
-
     public function form($pessoa, $metodo = ''): void
     {
         if ($metodo === 'alterar') {
-            $action = 'index.php?classe=pessoa&metodo=alterar';
+            $action = 'index.php?classe=pessoa&metodo=alterar&id="' . $pessoa->getId() . '"';
             $button = '<button class="btn btn-primary float-right ml-2" type="submit">Enviar</button>';
         } elseif ($metodo === 'criar') {
             $action = 'index.php?classe=pessoa&metodo=criar';
@@ -27,12 +17,12 @@ class ViewPessoa
 
         echo '
             <div class="d-flex justify-content-center">
-                <form style="width: 70%; border: 1px solid #343a40; border-radius: 5px" class="p-3 row" method="post" action="' + $action + '">
-                    <input type="text" class="form-control col-md-6" id="nome" placeholder="Digite o nome" value="' + $pessoa->getNome() ?? '' + '">
-                    <input type="text" class="form-control col-md-6" id="cpf" placeholder="Digite o CPF" value="' + $pessoa->getCpf() ?? '' + '">
+                <form style="width: 70%; border: 1px solid #343a40; border-radius: 5px" class="p-3 row" method="post" action="' . $action . '">
+                    <input type="text" class="form-control col-md-6" id="nome" placeholder="Digite o nome" value="' . $pessoa->getNome() ?? '' . '">
+                    <input type="text" class="form-control col-md-6" id="cpf" placeholder="Digite o CPF" value="' . $pessoa->getCpf() ?? '' . '">
 
                     <div class="col-md-12 mt-3">
-                        ' + $button + '
+                        ' . $button . '
                         <a class="btn btn-secondary float-right" href="index.php?classe=pessoa&metodo=listar" role="button">Voltar</a>
                     </div>
                 </form>
@@ -46,13 +36,13 @@ class ViewPessoa
         foreach ($pessoas as $pessoa) {
             $linhas .= '
                 <tr>
-                    <td>' + $pessoa->getId() + '</td>
-                    <td>' + $pessoa->getNome() + '</td>
-                    <td>' + $pessoa->getCpf() + '</td>
+                    <td>' . $pessoa->getId() . '</td>
+                    <td>' . $pessoa->getNome() . '</td>
+                    <td>' . $pessoa->getCpf() . '</td>
                     <td>
-                        <a class="btn btn-warning mr-1" href="index.php?classe=pessoa&metodo=alterar&id="' + $pessoa->getId() + '" role="button"><i class="bi bi-pencil"></i></a>
-                        <a class="btn btn-info mr-1" href="index.php?classe=pessoa&metodo=visualizar&id="' + $pessoa->getId() + '" role="button"><i class="bi bi-eye"></i></a>
-                        <a class="btn btn-danger" href="index.php?classe=pessoa&metodo=deletar&id="' + $pessoa->getId() + '" role="button"><i class="bi bi-trash"></i></a>
+                        <a class="btn btn-warning mr-1" href="index.php?classe=pessoa&metodo=alterar&id="' . $pessoa->getId() . '" role="button"><i class="bi bi-pencil"></i></a>
+                        <a class="btn btn-info mr-1" href="index.php?classe=pessoa&metodo=visualizar&id="' . $pessoa->getId() . '" role="button"><i class="bi bi-eye"></i></a>
+                        <a class="btn btn-danger" href="index.php?classe=pessoa&metodo=deletar&id="' . $pessoa->getId() . '" role="button"><i class="bi bi-trash"></i></a>
                     </td>
                 </tr>
             ';
@@ -82,7 +72,7 @@ class ViewPessoa
                         <th scope="col">Ações</th>
                     </tr>
                     </thead>
-                    <tbody>' + $linhas + '</tbody>
+                    <tbody>' . $linhas . '</tbody>
                 </table>
             </div>
         ';
