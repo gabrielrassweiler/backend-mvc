@@ -21,16 +21,30 @@ class ControllerContato extends Controller
 
     public function alterar($id)
     {
-        return $this->View->alterar($id);
+        $model = $this->entityManager->find($this->nomeModel, $id);
+
+        return $this->View->form($model, 'alterar');
     }
 
     public function visualizar($id)
     {
-        return $this->View->visualizar($id);
+        $model = $this->entityManager->find($this->nomeModel, $id);
+
+        return $this->View->form($model, '');
+    }
+
+    public function criar()
+    {
+        return $this->View->form((object)[], 'criar');
     }
 
     public function deletar($id)
     {
+        $model = $this->entityManager->find($this->nomeModel, $id);
+
+        $this->entityManager->remove($model);
+        $this->entityManager->flush();
+
         return $this->View->deletar();
     }
 }

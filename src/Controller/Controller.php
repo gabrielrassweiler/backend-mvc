@@ -34,7 +34,7 @@ class Controller
 
 	public function controleRotas(): void
 	{
-		if ($_GET) {
+		if ($_GET && !$_POST) {
 			$classe = $_GET['classe'];
 			$metodo = $_GET['metodo'];
 
@@ -52,21 +52,23 @@ class Controller
 					(new ControllerContato())->alterar($_GET['id'] ?? '');
 					return;
 				case ['pessoa', 'visualizar']:
-					(new ControllerPessoa())->visualizar($_GET['id']);
+					(new ControllerPessoa())->visualizar($_GET['id'] ?? '');
 					return;
 				case ['contato', 'visualizar']:
-					(new ControllerContato())->visualizar($_GET['id']);
+					(new ControllerContato())->visualizar($_GET['id'] ?? '');
 					return;
 				case ['pessoa', 'deletar']:
-					(new ControllerPessoa())->deletar($_GET['id']);
+					(new ControllerPessoa())->deletar($_GET['id'] ?? '');
 					return;
 				case ['contato', 'deletar']:
-					(new ControllerContato())->deletar($_GET['id']);
+					(new ControllerContato())->deletar($_GET['id'] ?? '');
 					return;
 				default:
 					(new View())->listarRotaNaoEncontrada();
 					return;
 			}
+		} elseif ($_GET && $_POST) {
+			//
 		}
 
 		(new View())->listarRotaHome();
