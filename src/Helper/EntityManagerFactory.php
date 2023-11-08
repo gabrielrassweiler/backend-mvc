@@ -15,7 +15,7 @@ class EntityManagerFactory
      */
     public function getEntityManager(): EntityManager
     {
-        $paths = [__DIR__ . '../Model'];
+        $paths = [__DIR__ . '/../Model'];
         $isDevMode = true;
 
         // the connection configuration
@@ -24,6 +24,7 @@ class EntityManagerFactory
             'user' => getenv('POSTGRES_USER'),
             'password' => getenv('POSTGRES_PASSWORD'),
             'dbname' => getenv('POSTGRES_DB'),
+            'path' => __DIR__ . '../../var/data/db.pgsql',
         ];
 
         $config = ORMSetup::createAttributeMetadataConfiguration($paths, $isDevMode);
