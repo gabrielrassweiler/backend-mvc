@@ -2,10 +2,9 @@
 
 namespace backend\Controller;
 
+use backend\Helper\EntityManagerFactory;
 use backend\View\View;
-use Doctrine\DBAL\DriverManager;
 use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\ORMSetup;
 use stdClass;
 
 class Controller
@@ -17,7 +16,7 @@ class Controller
 
     public function __construct()
     {
-        $this->entityManager = $this->getConexao();
+        $this->entityManager = (new EntityManagerFactory())->getEntityManager();
     }
 
     protected function carregaMVC()
@@ -118,23 +117,5 @@ class Controller
                 alert("Registro alterado com sucesso!");
             </script>
         ';
-    }
-
-    private function getConexao(): EntityManager
-    {
-        $paths = [__DIR__ . '../../src/Model'];
-        $isDevMode = true;
-
-        // the connection configuration
-        $dbParams = [
-            'driver' => 'pdo_pgsql',
-            'user' => getenv('POSTGRES_USER'),
-            'password' => getenv('POSTGRES_PASSWORD'),
-            'dbname' => getenv('POSTGRES_DB'),
-        ];
-
-        $config = ORMSetup::createAttributeMetadataConfiguration($paths, $isDevMode);
-        $connection = DriverManager::getConnection($dbParams, $config);
-        return new EntityManager($connection, $config);
     }
 }

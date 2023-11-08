@@ -1,24 +1,28 @@
 <?php
 
-use Doctrine\ORM\Mapping\Entity;
-use Doctrine\ORM\Mapping\Table;
-use Doctrine\ORM\Mapping\Id;
-use Doctrine\ORM\Mapping\Column;
-use Doctrine\ORM\Mapping\GeneratedValue;
+use Doctrine\ORM\Mapping as ORM;
 
-#[Entity]
-#[Table(name: 'pessoa')]
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="pessoa")
+ */
 class ModelPessoa
 {
-    #[Id]
-    #[Column(type: 'integer')]
-    #[GeneratedValue()]
-    private int $id;
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
 
-    #[Column(type: 'string')]
-    private string $nome;
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $nome;
 
-    #[Column(type: 'string')]
+    /**
+     * @ORM\Column(type="string")
+     */
     private string $cpf;
 
     /**

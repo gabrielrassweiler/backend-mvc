@@ -1,94 +1,105 @@
+
 <?php
 
-use Doctrine\ORM\Mapping\Entity;
-use Doctrine\ORM\Mapping\Table;
-use Doctrine\ORM\Mapping\Id;
-use Doctrine\ORM\Mapping\Column;
-use Doctrine\ORM\Mapping\GeneratedValue;
+use Doctrine\ORM\Mapping as ORM;
 
-#[Entity]
-#[Table(name: 'contato')]
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="contato")
+ */
 class ModelContato
 {
-    #[Id]
-    #[Column(type: 'integer')]
-    #[GeneratedValue()]
-    private int $id;
-
-    #[Column(type: 'string')]
-    private string $tipo;
-
-    #[Column(type: 'string')]
-    private string $descricao;
-
-    #[Column(name: 'id_pessoa', type: 'integer')]
-    private int $idPessoa;
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
 
     /**
-     * @return integer
+     * @ORM\Column(type="integer")
      */
-    public function getId(): int
-    {
-        return $this->id;
-    }
+    private $idPessoa;
 
     /**
-     * @param integer $id
-     * @return void
+     * @ORM\Column(type="string")
      */
-    public function setId(int $id): void
-    {
-        $this->id = $id;
-    }
+    private $tipo;
 
     /**
-     * @return string
+     * @ORM\Column(type="string")
      */
-    public function getTipo(): string
-    {
-        return $this->tipo;
-    }
+    private $descricao;
 
     /**
-     * @param string $tipo
-     * @return void
+     * Get the value of descricao
      */
-    public function setTipo(string $tipo): void
-    {
-        $this->tipo = $tipo;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescricao(): string
+    public function getDescricao()
     {
         return $this->descricao;
     }
 
     /**
-     * @param string $descricao
-     * @return void
+     * Set the value of descricao
+     *
+     * @return  self
      */
-    public function setDescricao(string $descricao): void
+    public function setDescricao($descricao)
     {
         $this->descricao = $descricao;
     }
 
     /**
-     * @return integer
+     * Get the value of tipo
      */
-    public function getIdPessoa(): int
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    /**
+     * Set the value of tipo
+     *
+     * @return  self
+     */
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+    }
+
+    /**
+     * Get the value of idPessoa
+     */
+    public function getIdPessoa()
     {
         return $this->idPessoa;
     }
 
     /**
-     * @param integer $idPessoa
-     * @return void
+     * Set the value of idPessoa
+     *
+     * @return  self
      */
-    public function setIdPessoa(int $idPessoa): void
+    public function setIdPessoa($idPessoa)
     {
         $this->idPessoa = $idPessoa;
+    }
+
+    /**
+     * Get the value of id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set the value of id
+     *
+     * @return  self
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
     }
 }
