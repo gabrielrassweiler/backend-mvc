@@ -7,8 +7,7 @@ composer install
 ```
 #### 3 - DB: criação do db com as respectivas entidades:
 ```
-vendor/bin/doctrine orm:convert-mapping --from-database annotation src/Model
-vendor/bin/doctrine orm:generate-entities src/Model
+vendor/bin/doctrine orm:schema-tool:create
 ```
 #### 4 - Com isso, basta apenas digitar o comando abaixo do docker, que a aplicação estará rodando localmente
 ```

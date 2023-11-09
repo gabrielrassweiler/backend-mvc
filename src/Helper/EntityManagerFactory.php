@@ -21,10 +21,11 @@ class EntityManagerFactory
         // the connection configuration
         $dbParams = [
             'driver' => 'pdo_pgsql',
-            'user' => getenv('POSTGRES_USER'),
-            'password' => getenv('POSTGRES_PASSWORD'),
-            'dbname' => getenv('POSTGRES_DB'),
-            'path' => __DIR__ . '../../var/data/db.pgsql',
+            'host' => 'localhost',
+            'port' => '5433',
+            'user' => 'root',
+            'password' => 'root',
+            'dbname' => 'backend',
         ];
 
         $config = ORMSetup::createAttributeMetadataConfiguration($paths, $isDevMode);

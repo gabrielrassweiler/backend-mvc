@@ -63,6 +63,12 @@ class Controller
                 case ['contato', 'deletar']:
                     (new ControllerContato())->deletar($_GET['id'] ?? '');
                     return;
+                case ['pessoa', 'criar']:
+                    (new ControllerPessoa())->criar();
+                    return;
+                case ['contato', 'criar']:
+                    (new ControllerContato())->criar();
+                    return;
                 default:
                     (new View())->listarRotaNaoEncontrada();
                     return;

@@ -22,8 +22,8 @@ class ViewContato
                         <option value="telefone">Telefone</option>
                         <option value="email">Email</option>
                     </select>
-                    <input type="text" class="form-control col-md-4" id="id_pessoa" placeholder="Digite o id da pessoa" value="' . $contato->getIdPessoa() ?? '' . '">
-                    <input type="text" class="form-control col-md-4" id="descricao" placeholder="Digite a descrição" value="' . $contato->getDescricao() ?? '' . '">
+                    <input type="text" class="form-control col-md-4" id="id_pessoa" placeholder="Digite o id da pessoa" value="' . @$contato->getIdPessoa() ?? '' . '">
+                    <input type="text" class="form-control col-md-4" id="descricao" placeholder="Digite a descrição" value="' . @$contato->getDescricao() ?? '' . '">
 
                     <div class="col-md-12 mt-3">
                         ' . $button . '

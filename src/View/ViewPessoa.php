@@ -18,8 +18,8 @@ class ViewPessoa
         echo '
             <div class="d-flex justify-content-center">
                 <form style="width: 70%; border: 1px solid #343a40; border-radius: 5px" class="p-3 row" method="post" action="' . $action . '">
-                    <input type="text" class="form-control col-md-6" id="nome" placeholder="Digite o nome" value="' . $pessoa->getNome() ?? '' . '">
-                    <input type="text" class="form-control col-md-6" id="cpf" placeholder="Digite o CPF" value="' . $pessoa->getCpf() ?? '' . '">
+                    <input type="text" class="form-control col-md-6" id="nome" placeholder="Digite o nome" value="' . @$pessoa->getNome() ?? '' . '">
+                    <input type="text" class="form-control col-md-6" id="cpf" placeholder="Digite o CPF" value="' . @$pessoa->getCpf() ?? '' . '">
 
                     <div class="col-md-12 mt-3">
                         ' . $button . '

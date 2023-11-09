@@ -1,18 +1,11 @@
 {
-  "name": "gabriel/backend-mvc",
-  "authors": [
-    {
-      "name": "gabrielrassweiler",
-      "email": "gabriel_rassweiler@hotmail.com.br"
-    }
-  ],
   "autoload": {
     "psr-4": {
       "backend\\": "src/"
     }
   },
   "require": {
-    "php": "^8.2.12",
+    "php": "^8.1.25",
     "doctrine/orm": "^2.16",
     "doctrine/dbal": "^3.6",
     "symfony/cache": "^6.2",

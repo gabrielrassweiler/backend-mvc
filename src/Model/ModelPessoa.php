@@ -1,20 +1,24 @@
 <?php
 
-use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\Table;
+use Doctrine\ORM\Mapping\Id;
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\GeneratedValue;
 
-#[ORM\Entity]
-#[ORM\Table(name: 'pessoa')]
+#[Entity(repositoryClass: PessoaRepository::class)]
+#[Table(name: 'pessoa')]
 class ModelPessoa
 {
-    #[ORM\Id]
-    #[ORM\Column(type: 'integer')]
-    #[ORM\GeneratedValue]
+    #[Id]
+    #[Column(type: 'integer')]
+    #[GeneratedValue]
     private $id;
 
-    #[ORM\Column(type: 'string')]
+    #[Column(type: 'string')]
     private $nome;
 
-    #[ORM\Column(type: 'string')]
+    #[Column(type: 'string')]
     private string $cpf;
 
     /**
